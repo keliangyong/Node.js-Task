@@ -1,0 +1,31 @@
+{
+  "name": "pure-node-notebook",
+  "version": "1.0.0",
+  "description": "a node note book",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keliangyong/Node.js-Task.git"
+  },
+  "keywords": [
+    "node",
+    "text"
+  ],
+  "author": "kely",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keliangyong/Node.js-Task/issues"
+  },
+  "homepage": "https://github.com/keliangyong/Node.js-Task#readme",
+  "devDependencies": {
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3"
+  }
+}

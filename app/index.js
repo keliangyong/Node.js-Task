@@ -1,22 +1,21 @@
 /*
-	主要核心逻辑入口
- */
+主要核心逻辑入口
+*/
 
 const fs = require('fs')
+const path = require('path')
+const staticServer = require('./static-server')
 
 class App {
-	constructor(){
+	constructor() {
 
 	}
-	initServer() {
-		// process.cwd()
-		// 初始化工作 
-		let pack = require('../package')
+	initServer() {// process.cwd()
 		return (request, response) => {
 			// 核心逻辑
-			fs.readFile('./public/index.html', 'utf8', (error, data) => {
-				response.end(JSON.stringify(pack))
-			})
+			let { url } = request
+			let responseData = staticServer(url)
+			response.end(responseData)
 		}
 	}
 }

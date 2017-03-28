@@ -8,21 +8,22 @@ const path = require('path')
 const fs = require('fs')
 
 let getPath = (url) => path.resolve(process.cwd(), 'public', `.${url}`)
-let staticFunc = (url)=>{
-	let map = {
-		'/': '/index.html',
-		'/about': '/abount.html',
-		'/list': '/list.html'
-	}
-	let _url = map[url] || url
-	let _path = getPath(_url)
-	let body = ''
-	try{
-		body = fs.readFileSync(_path)
-	}catch(error){
-		body = `DATA NOT FOUND${error.stack}`
-	}
-	return body
+let staticFunc = (url) => {
+	return new Promise(function(reslove,reject){
+		let map = {
+			'/': '/index.html',
+			'/about': '/abount.html',
+			'/list': '/list.html'
+		}
+		let _url = map[url] || url
+		let _path = getPath(_url)
+		fs.readFile(_path, (err, data)=>{
+			if(err){
+				reject(`DATA NOT FOUND${err.stack}`)
+			}
+			reslove(data)
+		})
+	})
 };
 
 module.exports = staticFunc

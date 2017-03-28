@@ -5,17 +5,27 @@
 const fs = require('fs')
 const path = require('path')
 const staticServer = require('./static-server')
+const apiServer = require('./api')
 
 class App {
 	constructor() {
 
 	}
-	initServer() {// process.cwd()
+	initServer() {// process.cwd() 核心逻辑
 		return (request, response) => {
-			// 核心逻辑
 			let { url } = request
-			let responseData = staticServer(url)
-			response.end(responseData)
+			response.setHeader('X-powered-by', 'Node.js')
+			apiServer(url)
+			.then( data => {
+				response.writeHead(200, 'ok', {'Content-Type': 'application/json'})
+				response.end(JSON.stringify(data))
+			})
+			.catch( url => staticServer(url) )
+			.then( fileData => response.end(fileData) )
+			.catch( err => {
+				response.writeHead(404, 'Not Found')
+				response.end(`DATA NOT FOUND${err.stack}`) 
+			})
 		}
 	}
 }

@@ -16,8 +16,11 @@ setTimeout(function(){
 
 	$.ajax({
 		url: './list.action',
-		type: 'get',
-		data: {param1: 'value1'},
+		type: 'post',
+		headers: {
+			'content-type':"application/json"
+		},
+		data: JSON.stringify(['POST 数据1', 'POST 数据2', 'POST 数据3',]),
 	})
 	.done(function(data) {
 		var html = data.map(function(item){

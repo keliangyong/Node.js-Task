@@ -3,10 +3,11 @@
  * 根据url请求的方法 返回数据
 */
 
-let apiServer = (request) => {
+let apiServer = (ctx) => {
 	let ret
-	let {url,context} = request
-	if(context.method == 'get'){
+	let { method, url } = ctx.req
+	method = method.toLowerCase()
+	if(method == 'get'){
 		let road = url.split("?")[0]
 		let apiMap = {
 			'/user.action': ['张三','李四','王五'],
@@ -14,10 +15,11 @@ let apiServer = (request) => {
 		}
 		ret = road in apiMap ?　apiMap[road] : ""
 	}else{
-		ret = context.body
+		ret = ctx.reqCtx.body
 	}
-	
-	return Promise.resolve(ret)
+	ctx.resCtx.body = ret
+
+	return Promise.resolve()
 }
 
 module.exports = apiServer

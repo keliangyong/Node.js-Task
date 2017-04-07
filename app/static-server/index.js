@@ -8,7 +8,8 @@ const path = require('path')
 const fs = require('fs')
 
 let getPath = (url) => path.resolve(process.cwd(), 'public', `.${url}`)
-let staticFunc = (url) => {
+let staticFunc = (ctx) => {
+	let { url } = ctx.req
 	return new Promise(function(reslove,reject){
 		let map = {
 			'/': '/index.html',
@@ -19,9 +20,10 @@ let staticFunc = (url) => {
 		let _path = getPath(_url)
 		fs.readFile(_path, (err, data)=>{
 			if(err){
-				reject(`DATA NOT FOUND${err.stack}`)
+				ctx.resCtx.body = `DATA NOT FOUND${err.stack}`
 			}
-			reslove(data)
+			ctx.resCtx.body = data
+			reslove()
 		})
 	})
 };

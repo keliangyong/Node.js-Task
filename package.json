@@ -4,7 +4,7 @@
   "description": "a node note book",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodemon --inspect test/index.js",
     "start": "nodemon --inspect index.js"
   },
   "repository": {

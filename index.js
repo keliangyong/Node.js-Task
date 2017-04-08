@@ -8,6 +8,14 @@ const App = require('./app')
 const PORT = 7000
 const app = new App()
 
+// 中间件
+const urlParser = require('./app/url-parser')
+const apiServer = require('./app/api')
+const staticServer = require('./app/static-server')
+app.use(urlParser)
+app.use(apiServer)
+app.use(staticServer)
+
 http.createServer(app.initServer()).listen(PORT, () => {
 	console.log(`server listening on port ${PORT}`)
 })// app.initServer() == (request, response) => { // todo }

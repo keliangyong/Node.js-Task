@@ -12,9 +12,11 @@ const app = new App()
 const urlParser = require('./app/url-parser')
 const apiServer = require('./app/api')
 const staticServer = require('./app/static-server')
+const viewServer = require('./app/view-server')
 app.use(urlParser)
 app.use(apiServer)
 app.use(staticServer)
+app.use(viewServer)
 
 http.createServer(app.initServer()).listen(PORT, () => {
 	console.log(`server listening on port ${PORT}`)

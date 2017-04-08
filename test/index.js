@@ -1,1 +1,2 @@
-require('./buffer')
+// require('./buffer')
+require('./ejs')

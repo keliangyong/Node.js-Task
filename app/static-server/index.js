@@ -8,27 +8,24 @@ const path = require('path')
 const fs = require('fs')
 const mime = require('mime')
 
-let getPath = (url) => path.resolve(process.cwd(), 'public', `.${url}`)
+let getPath = (url) => path.resolve(process.cwd(), 'dist', `.${url}`)
 let staticFunc = (ctx) => {
 	let { req, resCtx } = ctx
 	let { url } = req
-	return new Promise(function(resolve, reject){
+	return new Promise((resolve, reject) => {
 		if(!url.match('action') && url.match(/\./)){
-			let map = {
-				'/': '/index.html',
-				'/about': '/abount.html',
-				'/list': '/list.html'
-			}
-			let _url = map[url] || url
-			let _path = getPath(_url)
+			let _path = getPath(url)
 			resCtx.headers = Object.assign(resCtx.headers,{
 				'Content-Type':mime.lookup(_path)
 			})
 			fs.readFile(_path, (err, data)=>{
 				if(err){
-					resCtx.body = `DATA NOT FOUND${err.stack}`
+					resCtx.statusCode = 404
+					resCtx.statusMessage = 'Not Found'
+					resCtx.body = `DATA NOT FOUND ${err.stack}`
+				}else{
+					resCtx.body = data
 				}
-				resCtx.body = data
 				resolve()
 			})		
 		}else{

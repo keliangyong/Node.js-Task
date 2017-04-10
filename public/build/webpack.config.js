@@ -25,7 +25,7 @@ module.exports =  {
         // debug: true,
         devtool: 'source-map',
         output: {
-            path: path.resolve(process.cwd(),'dist/'),
+            path: path.resolve(process.cwd(),'../dist/'),
             filename: '[name].js',
             chunkFilename: '[name].min.js',
             publicPath: ''

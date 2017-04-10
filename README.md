@@ -13,7 +13,10 @@
                 ...
             index.js                        // 模板处理js
         index.js                        // 核心逻辑 http server
-    public                          // 静态资源
+    dist							// 编译输出目录
+    	common.css   					// 公共css
+    	common.js   					// 公共js
+    public                          // 源静态资源
         build                           // webpack构建信息
             alias.js                        // 模块别名设置
             plugin_loader.js                // 插件设置
@@ -27,6 +30,11 @@
     index.js                        // 主程序入口
     package.json                    // 包管理及依赖信息
 ```
+# 使用方式
+	=> 主目录		npm install(安装Node.js依赖)
+	=> public目录	npm install(安装webpack依赖) && npm start(编译)
+	=> 主目录 		npm start
+
 # 学习过程
 * 1. 创建一个简单的服务 http.createServer()
 * 2. 增加静态资源返回（html css img）

@@ -32,18 +32,21 @@ class App {
 				},
 				res: response,
 				resCtx: {
-					headers: {}, 				// response的返回报文
+					statusCode: 200,				// 状态码
+					headers: {}, 				// 返回报文头
+					statusMessage: "ok",		// 状态信息
 					body: '', 					// 返回给前端的内容
 				}
 			}
+			let { resCtx } = context
 			this.composeMiddleware(context)
 			.then(() => {
-				response.writeHead(200, 'ok', context.resCtx.headers)
-				response.end(context.resCtx.body)
+				response.writeHead(resCtx.statusCode, resCtx.statusMessage, resCtx.headers)
+				response.end(resCtx.body)
 			})
 			.catch( err => {   					// 出错了 没找到文件
 				response.writeHead(404, 'Not Found')
-				response.end(`DATA NOT FOUND${err.stack}`) 
+				response.end(`DATA NOT FOUND ${err.stack}`) 
 			})
 		}
 	}

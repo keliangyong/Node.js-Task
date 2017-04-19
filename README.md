@@ -28,15 +28,15 @@
     package.json                    // 包管理及依赖信息
 ```
 # 使用方式
-	=> 主目录		npm install(安装Node.js依赖)
-	=> public目录	npm install(安装webpack依赖) && npm start(编译)
-	=> 主目录 		npm start
+	=> 主目录		    npm install(安装Node.js依赖)
+	=> public目录	     npm install(安装webpack依赖) && npm start(编译)
+	=> 主目录 		    npm start
 
 # 学习过程
-* 1. 创建一个简单的服务 http.createServer()
-* 2. 增加静态资源返回（html css img）
-* 3. 增加json数据返回 引入Promise（get请求）
-* 4. 引入stream处理post请求 Promise串接各个服务
-* 5. 学习Buffer Promise重构流式中间件
-* 6. 学习ejs 使用webpack2构建前端
-* 7. 构建动态路由 & 学习markdown 
+* 创建一个简单的服务 http.createServer()
+* 增加静态资源返回（html css img）
+* 增加json数据返回 引入Promise（get请求）
+* 引入stream处理post请求 Promise串接各个服务
+* 学习Buffer Promise重构流式中间件
+* 学习ejs 使用webpack2构建前端
+* 构建动态路由 & 学习markdown 

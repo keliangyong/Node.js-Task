@@ -16,7 +16,10 @@ var  AddResolve = (obj)=>{
 module.exports =  {
         watch: true,
         entry: {
-            index:'./js/index.js',
+            index:'./js/index/index.js',
+            // list:'./js/list/index.js',
+            // write:'./js/write/index.js',
+            // about:'./js/about/index.js',
             common: [
                 'jquery',
                 "reset"
@@ -25,7 +28,7 @@ module.exports =  {
         // debug: true,
         devtool: 'source-map',
         output: {
-            path: path.resolve(process.cwd(),'../dist/'),
+            path: path.resolve(process.cwd(),'dist/'),
             filename: '[name].js',
             chunkFilename: '[name].min.js',
             publicPath: ''

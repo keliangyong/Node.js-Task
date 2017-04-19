@@ -13,9 +13,6 @@
                 ...
             index.js                        // 模板处理js
         index.js                        // 核心逻辑 http server
-    dist							// 编译输出目录
-    	common.css   					// 公共css
-    	common.js   					// 公共js
     public                          // 源静态资源
         build                           // webpack构建信息
             alias.js                        // 模块别名设置

@@ -8,7 +8,7 @@ const path = require('path')
 const fs = require('fs')
 const mime = require('mime')
 
-let getPath = (url) => path.resolve(process.cwd(), 'dist', `.${url}`)
+let getPath = (url) => path.resolve(process.cwd(), 'public', `.${url}`)
 let staticFunc = (ctx) => {
 	let { req, resCtx } = ctx
 	let { url } = req

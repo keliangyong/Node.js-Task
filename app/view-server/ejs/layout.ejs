@@ -6,14 +6,16 @@
 <title>Examples</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link href="./css/reset.css" rel="stylesheet">
-<link href="./css/index.css" rel="stylesheet">
+<link href="./dist/common.css" rel="stylesheet">
+<link href="./dist/index.css" rel="stylesheet">
 </head>
 <body>
     <!--头部-->
     <%- include('./module/header') %>
     <!--中间部分-->
-    <%- include(templateName) %>
+    <div class="main">
+        <%- include(templateName) %>
+    </div>
     <!--底部-->
     <%- include('./module/footer') %>
 </body>

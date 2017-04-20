@@ -15,7 +15,9 @@ module.exports = (ctx) => {
 					data.push(chunk)
 				}).on('end', () => {
 					bufferData = Buffer.concat(data)
-					reqCtx.body = JSON.parse(bufferData)
+					try{
+						reqCtx.body = JSON.parse(bufferData)
+					}catch(e){}
 					resolve()
 				})
 			}else{

@@ -15,11 +15,11 @@ module.exports = (ctx) => {
     let { req, resCtx } = ctx
     let { url } = req
     return Promise.resolve({
-        then:(resolve, reject) => {
+        then: (resolve, reject) => {
             let viewPath = path.resolve(__dirname, 'ejs')
-            if(resCtx.body){
+            if (resCtx.body) {
                 resolve()
-            }else if(urlMap[url]){
+            } else if (urlMap[url]) {
                 let { viewName } = urlMap[url]
                 let layoutPath = path.resolve(viewPath, './layout.ejs')
                 let render = ejs.compile(fs.readFileSync(layoutPath, 'utf8'), {
@@ -29,9 +29,12 @@ module.exports = (ctx) => {
                 resCtx.headers = Object.assign(resCtx.headers, {
                     'Content-Type': 'text/html'
                 })
-                resCtx.body = render({templateName: viewName})
+                resCtx.body = render({
+                    templateName: viewName,
+                    isMaster: resCtx.isMaster
+                })
                 resolve()
-            }else{
+            } else {
                 resCtx.headers = Object.assign(resCtx.headers, {
                     'Location': '/'
                 })

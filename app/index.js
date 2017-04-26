@@ -32,6 +32,7 @@ class App {
 				},
 				res: response,
 				resCtx: {
+					isMaster: false,
 					statusCode: 200,				// 状态码
 					headers: {}, 				// 返回报文头
 					statusMessage: "ok",		// 状态信息
